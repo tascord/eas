@@ -59,22 +59,75 @@
             animation: static 0.5s infinite step-start;
         }
 
-        @keyframes static {
-            0%   { background-position: 5% 100%;  }
-            20%  { background-position: 40% 50%;  }
-            40%  { background-position: 70% 10%;  }
-            60%  { background-position:  0% 40%;  }
-            80%  { background-position: 30% 20%;  }
-            100% { background-position: 90%  0%;  }
+        .accept {
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            z-index: 40;
+            flex-direction: column;
+            background: black;
+
         }
 
+        p {
+            color: white;
+            max-width: 25rem;
+            font-size: 1.3rem;
+        }
+
+        button {
+            width: 10rem;
+            height: 2rem;
+            cursor: pointer;
+        }
+
+        @keyframes static {
+            0% {
+                background-position: 5% 100%;
+            }
+
+            20% {
+                background-position: 40% 50%;
+            }
+
+            40% {
+                background-position: 70% 10%;
+            }
+
+            60% {
+                background-position: 0% 40%;
+            }
+
+            80% {
+                background-position: 30% 20%;
+            }
+
+            100% {
+                background-position: 90% 0%;
+            }
+        }
     </style>
 
 </head>
 
 <body>
 
-    <div class="overlay"></div>
+    <section class="accept">
+        <p>
+            This site contains flashing imagery and potentially loud noises simulating a US EAS alarm
+            Do you understand this, and are you willing to proceed?
+        </p>
+        <button onclick="ready()">Yes.</button>
+    </section>
+
+    <div class="overlay">
+    </div>
 
     <audio id="eas" src="alarm.wav"></audio>
     <audio id="static" src="static.mp3"></audio>
