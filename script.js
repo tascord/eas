@@ -4,7 +4,7 @@ const Config = {
     loop: true,
     corruption: 4,
     speak: true,
-    voice: 'George',
+    voice: 'David',
     
     voice_volume: 3,
     eas_volume: 0.05,

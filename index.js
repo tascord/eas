@@ -176,7 +176,7 @@ function update_text() {
 
     lines[1] = end;
 
-    if (Config.speak) speak(slices.slice(lines[0], lines[1]).join(''));
+    if (Config.speak) speak(slices.slice(lines[0], lines[1]).join(' '));
 }
 
 function corrupt(data) {
