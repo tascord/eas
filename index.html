@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="script.js"></script>
+    <script src="index.js" defer></script>
+
+    <title> // </title>
+
+    <style>
+        @font-face {
+            font-family: VCR;
+            src: url('./VCR.ttf');
+            font-weight: normal;
+        }
+
+        body {
+            overflow: hidden;
+            background: black;
+            max-width: 100vw;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        canvas {
+            -webkit-filter: url(#abberate);
+            width: 100vw;
+            height: 100vh;
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 20;
+            width: 100vw;
+            height: 100vh;
+            opacity: 0.25;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('./static.jpg');
+            mix-blend-mode: luminosity;
+            opacity: 0.2;
+            background-repeat: repeat;
+            background-size: 150%;
+            z-index: 30;
+            animation: static 0.5s infinite step-start;
+        }
+
+        @keyframes static {
+            0%   { background-position: 5% 100%;  }
+            20%  { background-position: 40% 50%;  }
+            40%  { background-position: 70% 10%;  }
+            60%  { background-position:  0% 40%;  }
+            80%  { background-position: 30% 20%;  }
+            100% { background-position: 90%  0%;  }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <audio id="eas" src="alarm.wav"></audio>
+    <audio id="static" src="static.mp3"></audio>
+
+    <img draggable="false">
+    <canvas></canvas>
+
+    <svg width="0" height="0">
+        <filter id="abberate">
+            <feColorMatrix type="matrix" result="red_" values="4 0 0 0 0
+                    0 0 0 0 0 
+                    0 0 1 0 0 
+                    0 0 0 1 0" />
+            <feOffset in="red_" dx="1" dy="0" result="red" />
+            <feColorMatrix type="matrix" in="SourceGraphic" result="blue_" values="0 0 0 0 0
+                    0 3 0 0 0 
+                    0 0 1 0 0 
+                    0 0 0 1 0" />
+            <feOffset in="blue_" dx="-1" dy="0" result="blue" />
+            <feBlend mode="screen" in="red" in2="blue" />
+
+        </filter>
+
+</body>
+
+</html>
